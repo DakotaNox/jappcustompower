@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es" class="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>JAPP Custom Power | Catálogo</title>
+    <meta
+      name="description"
+      content="Catálogo JAPP Custom Power: explora, filtra y pide por WhatsApp."
+    />
+    <link rel="icon" href="assets/img/logojapp.JPG" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              brand: { 500: "#f97316", 600: "#ea580c", 700: "#c2410c" },
+              metal: { 500: "#cfd3d8" },
+            },
+          },
+        },
+      };
+    </script>
+    <link rel="stylesheet" href="assets/css/styles.css" />
+  </head>
+  <body class="bg-neutral-950 text-gray-100">
+    <header
+      class="sticky top-0 z-50 bg-neutral-900/80 backdrop-blur border-b border-neutral-800"
+    >
+      <div class="max-w-6xl mx-auto px-4 py-3 flex items-center gap-3">
+        <img
+          src="assets/img/logojapp.JPG"
+          alt="JAPP Custom Power"
+          class="h-10 w-auto rounded"
+        />
+        <nav class="ml-auto flex items-center gap-2 text-sm">
+          <a
+            href="index.html"
+            class="px-3 py-1.5 rounded-lg hover:bg-neutral-800"
+            >Inicio</a
+          >
+          <a href="productos.html" class="px-3 py-1.5 rounded-lg bg-neutral-800"
+            >Productos</a
+          >
+          <a
+            id="ctaWhatsAppTop"
+            target="_blank"
+            class="px-3 py-1.5 rounded-lg bg-brand-600 text-white hover:bg-brand-700"
+            >Escríbeme</a
+          >
+        </nav>
+      </div>
+    </header>
+
+    <!-- Filtros -->
+    <section class="bg-gradient-to-b from-neutral-900 to-neutral-950">
+      <div class="max-w-6xl mx-auto px-4 py-12 md:py-16">
+        <h1 class="text-3xl md:text-4xl font-bold tracking-tight">Catálogo</h1>
+        <p class="mt-2 text-gray-400">
+          Explora, filtra y pide por WhatsApp con un clic.
+        </p>
+
+        <div class="mt-6 grid gap-3 md:grid-cols-3">
+          <label class="relative block">
+            <input
+              id="search"
+              type="search"
+              placeholder="Buscar por nombre o descripción..."
+              class="w-full rounded-xl border border-neutral-800 bg-neutral-900 text-gray-100 placeholder:text-gray-500 px-4 py-3 pr-10 focus:outline-none focus:ring-2 focus:ring-brand-500"
+            />
+            <svg
+              class="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-500"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path d="m21 21-4.3-4.3" />
+              <circle cx="11" cy="11" r="7" />
+            </svg>
+          </label>
+          <select
+            id="category"
+            class="rounded-xl border border-neutral-800 bg-neutral-900 text-gray-100 px-4 py-3 focus:ring-2 focus:ring-brand-500"
+          >
+            <option value="">Todas las categorías</option>
+          </select>
+          <select
+            id="sort"
+            class="rounded-xl border border-neutral-800 bg-neutral-900 text-gray-100 px-4 py-3 focus:ring-2 focus:ring-brand-500"
+          >
+            <option value="relevancia">Ordenar: Relevancia</option>
+            <option value="precio-asc">Precio: menor a mayor</option>
+            <option value="precio-desc">Precio: mayor a menor</option>
+            <option value="nombre-asc">Nombre: A → Z</option>
+            <option value="nombre-desc">Nombre: Z → A</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <!-- Grid -->
+    <main id="catalogo" class="max-w-6xl mx-auto px-4 pb-16">
+      <div
+        id="grid"
+        class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+      ></div>
+      <div id="empty" class="hidden mt-10 text-center text-gray-400">
+        No hay productos que coincidan con tu búsqueda.
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-neutral-800">
+      <div
+        class="max-w-6xl mx-auto px-4 py-8 text-sm text-gray-400 flex flex-col md:flex-row items-center gap-3"
+      >
+        <div>
+          © <span id="year"></span> JAPP Custom Power. Todos los derechos
+          reservados.
+        </div>
+        <div class="md:ml-auto">
+          <a
+            id="ctaWhatsAppBottom"
+            target="_blank"
+            class="px-3 py-1.5 rounded-lg bg-brand-600 text-white hover:bg-brand-700"
+            >Pedir por WhatsApp</a
+          >
+        </div>
+      </div>
+    </footer>
+
+    <!-- Template tarjeta -->
+    <template id="card-template">
+      <article
+        class="group rounded-2xl border border-neutral-800 bg-neutral-900 overflow-hidden hover:shadow-md transition-shadow"
+      >
+        <div class="aspect-[4/3] overflow-hidden bg-neutral-800">
+          <img
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            loading="lazy"
+            decoding="async"
+            alt=""
+          />
+        </div>
+        <div class="p-4 space-y-3">
+          <div class="flex items-start justify-between gap-3">
+            <h3 class="font-semibold leading-tight text-gray-100"></h3>
+            <span
+              class="shrink-0 rounded-full bg-brand-500/15 text-brand-400 text-xs px-2 py-1"
+            ></span>
+          </div>
+          <p class="text-sm text-gray-400 line-clamp-2"></p>
+          <div class="flex items-center justify-between">
+            <div class="font-semibold text-metal-500"></div>
+            <div class="flex items-center gap-2">
+              <input
+                type="number"
+                min="1"
+                value="1"
+                class="w-16 rounded-lg border border-neutral-800 bg-neutral-900 text-gray-100 px-2 py-1 text-sm focus:ring-2 focus:ring-brand-500"
+              />
+              <a
+                target="_blank"
+                class="inline-flex items-center gap-2 rounded-xl bg-brand-600 text-white text-sm px-3 py-2 hover:bg-brand-700"
+              >
+                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M20.52 3.48a11.94 11.94 0 1 0 0 16.88l.19-.19a1.5 1.5 0 0 0 .37-1.56l-.77-2.3a1.5 1.5 0 0 0-1.2-1l-2.4-.34a1.5 1.5 0 0 0-1.23.39l-.86.78a7.1 7.1 0 0 1-3.41-3.41l.78-.86a1.5 1.5 0 0 0 .39-1.23l-.34-2.4a1.5 1.5 0 0 0-1-1.2l-2.3-.77a1.5 1.5 0 0 0-1.56.37l-.19.19Z"
+                  />
+                </svg>
+                <span>Pedir</span>
+              </a>
+            </div>
+          </div>
+          <div class="text-[11px] text-gray-500">
+            Código: <span class="font-mono"></span>
+          </div>
+        </div>
+      </article>
+    </template>
+
+    <script src="assets/js/app.js"></script>
+  </body>
+  <script>
+    // Rellena año y WhatsApp como fallback
+    (function () {
+      const phone = "50764952054";
+      const y = document.getElementById("year");
+      if (y) y.textContent = new Date().getFullYear();
+      const hello = "Hola! Vengo del sitio de JAPP Custom Power.";
+      const wl = `https://api.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(
+        hello
+      )}`;
+      const t = document.getElementById("ctaWhatsAppTop");
+      const b = document.getElementById("ctaWhatsAppBottom");
+      if (t && !t.href) t.href = wl;
+      if (b && !b.href) b.href = wl;
+    })();
+  </script>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es" class="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>JAPP Custom Power | Inicio</title>
+    <meta
+      name="description"
+      content="Taller JAPP Custom Power: performance, accesorios y servicios."
+    />
+    <link rel="icon" href="assets/img/logojapp.JPG" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              brand: { 500: "#f97316", 600: "#ea580c", 700: "#c2410c" },
+            },
+          },
+        },
+      };
+    </script>
+    <link rel="stylesheet" href="assets/css/styles.css" />
+  </head>
+  <body class="bg-neutral-950 text-gray-100">
+    <!-- Header -->
+    <header
+      class="sticky top-0 z-50 bg-neutral-900/80 backdrop-blur border-b border-neutral-800"
+    >
+      <div class="max-w-6xl mx-auto px-4 py-3 flex items-center gap-3">
+        <img
+          src="assets/img/logojapp.JPG"
+          alt="JAPP Custom Power"
+          class="h-10 w-auto rounded"
+        />
+        <nav class="ml-auto flex items-center gap-2 text-sm">
+          <a href="index.html" class="px-3 py-1.5 rounded-lg bg-neutral-800"
+            >Inicio</a
+          >
+          <a
+            href="productos.html"
+            class="px-3 py-1.5 rounded-lg hover:bg-neutral-800"
+            >Productos</a
+          >
+          <a
+            id="ctaWhatsAppTop"
+            target="_blank"
+            class="px-3 py-1.5 rounded-lg bg-brand-600 text-white hover:bg-brand-700"
+            >Escríbeme</a
+          >
+        </nav>
+      </div>
+    </header>
+
+    <!-- Portada -->
+    <section class="relative min-h-[80vh]">
+      <!-- 👇 tu fondo -->
+      <!-- <div
+        class="absolute inset-0 bg-center bg-cover"
+        style="background-image: url('assets/img/fondo_marca_aguaJapp.png')" 
+      ></div> -->
+      <div class="absolute inset-0 bg-neutral-950/70"></div>
+
+      <div class="relative max-w-6xl mx-auto px-4 py-20 md:py-28">
+        <div class="max-w-3xl">
+          <h1 class="text-4xl md:text-5xl font-extrabold">
+            Bienvenido a <span class="text-brand-500">JAPP Custom Power</span>
+          </h1>
+          <p class="mt-4 text-gray-300 text-lg">
+            Taller especializado en performance, accesorios y servicios para
+            sacar el máximo a tu vehículo. Potencia, calidad y asesoría
+            profesional.
+          </p>
+
+          <div class="mt-8 flex items-center gap-3">
+            <a
+              href="productos.html"
+              class="inline-flex items-center rounded-xl bg-brand-600 text-white px-5 py-3 text-sm font-semibold hover:bg-brand-700"
+            >
+              Ver productos
+            </a>
+            <a
+              id="ctaWhatsAppHero"
+              target="_blank"
+              class="inline-flex items-center rounded-xl border border-neutral-700 px-5 py-3 text-sm hover:bg-neutral-800"
+            >
+              Escríbenos
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-neutral-800">
+      <div class="max-w-6xl mx-auto px-4 py-8 text-sm text-gray-400">
+        © <span id="year"></span> JAPP Custom Power. Todos los derechos
+        reservados.
+      </div>
+    </footer>
+
+    <script>
+      const WHATSAPP_PHONE = "50764952054"; // <-- tu número (solo dígitos)
+      document.getElementById("year").textContent = new Date().getFullYear();
+      const hello = "Hola! Vengo del sitio de JAPP Custom Power.";
+      const wl = `https://api.whatsapp.com/send?phone=${WHATSAPP_PHONE}&text=${encodeURIComponent(hello)}`;
+      document.getElementById("ctaWhatsAppTop").href = wl;
+      document.getElementById("ctaWhatsAppHero").href = wl;
+    </script>
+  </body>
+</html>
